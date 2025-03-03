@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Gerador de Senhas</title>
+	</head>
+	<body>
+		<h1>Bem-vindo(a) ao Gerador de Senhas</h1><br>
+		<p>Diga a quantidade de letras maiúsculas:</p><br>
+		<input type="number" placeholder="Quantidade" id="01"><br>
+		<p>Diga a quantidade de letras minúsculas: </p><br>
+		<input type="number" id="02"><br>
+		<p>Diga a quantidade de números: </p><br>
+		<input type="number" id="03"><br>
+		<p>Diga a quantidade de caracteres especiais: </p>
+		<input type="number" id="04"><br>
+		<button onclick="gerar()">Gerar</button><br>
+		<p id="saida"></p>
+	</body>
+	<script>
+		let saida = document.getElementById('saida');
+		const letrasMinusculas = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+		const letrasMaiusculas = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+		const numbers = [0,1,2,3,4,5,6,7,8,9];
+		const specials = ['#','$','@','%','&' ];
+		
+		let QMin = parseInt(document.getElementById('02').value);
+		let QMai = parseInt(document.getElementById('01').value);
+		let QNum = parseInt(document.getElementById('03').value);
+		let QEsp = parseInt(document.getElementById('04').value);
+
+		let first = [];
+		let second = [];
+		let third = [];
+		let four = [];
+		function numberaleal(min, max){
+			return Math.floor(Math.random() * (max-min + 1) + min);
+		}
+		function gerar(){
+			if(QMai > 0){
+				for(let i = 0; i<QMai; i++){
+					let number = numberaleal(1,26);
+					first[i] = letrasMaiusculas[number];
+				}
+			}
+			if(QMin > 0){
+				for(let i = 0; i<QMin; i++){
+					let number = numberaleal(1,26);
+					second[i] = letrasMinusculas[number];
+				}
+			}
+			if(QNum > 0){
+				for(let i = 0; i<QNum; i++){
+					let number = numberaleal(1,10);
+					third[i] = numbers[number]
+				}
+			}
+			if(QEsp > 0){
+				for(let i = 0; i<QEsp; i++){
+					let number = numberaleal(1,5);
+					four[i] = specials[number];
+				}
+			}
+			const senha = first.concat(second,third,four).join('');
+			saida.textContent = senha
+		}
+	</script>
+</html>
