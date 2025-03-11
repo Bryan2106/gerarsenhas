@@ -72,11 +72,6 @@
 		const letrasMaiusculas = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 		const numbers = [0,1,2,3,4,5,6,7,8,9];
 		const specials = ['#','$','@','%','&' ];
-		
-		let QMin = parseInt(document.getElementById('02').value);
-		let QMai = parseInt(document.getElementById('01').value);
-		let QNum = parseInt(document.getElementById('03').value);
-		let QEsp = parseInt(document.getElementById('04').value);
 
 		let first = [];
 		let second = [];
@@ -86,6 +81,10 @@
 			return Math.floor(Math.random() * (max-min + 1) + min);
 		}
 		function gerar(){
+			let QMin = parseInt(document.getElementById('02').value);
+		let QMai = parseInt(document.getElementById('01').value);
+		let QNum = parseInt(document.getElementById('03').value);
+		let QEsp = parseInt(document.getElementById('04').value);
 			if(QMai > 0){
 				for(let i = 0; i<QMai; i++){
 					let number = numberaleal(1,26);
